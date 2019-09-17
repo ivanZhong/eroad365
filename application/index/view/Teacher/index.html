@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户数据管理</title>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <style>
+            div{ height: 32px; line-height: 32px;}
+            .title{ background-color: #5bc0de; font-size: 16px;}
+
+        </style>
+        <div class="row" style="margin:15px 0;">
+            <form action="teacher" method="get">
+                <div class="col-xs-3" style="padding-left: 0;">
+                    <input class="form-control" name="name" placeholder="姓名..." type="text"/>
+                </div>
+                <div class="col-xs-3"><button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button></div>
+            </form>
+            <div class="col-xs-4"></div>
+            <div class="col-xs-2 text-right" style="padding-right: 0;">
+                <a class="btn btn-primary" href="{:url('add')}"><i class="glyphicon glyphicon-plus"></i>&nbsp;添加</a>
+            </div>
+        </div>
+        <div class="row" style="margin:15px 0;">
+            <form action="{:url('upload')}" method="post" enctype="multipart/form-data">
+                <div class="col-xs-3" style="padding-left: 0;">
+                    <input class="form-control" name="files"  type="file" id="files"/>
+                </div>
+                <div class="col-xs-3"><button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-upload"></i>&nbsp;上传</button></div>
+            </form>
+        </div>
+        <div class="title col-xs-12">
+            <div class="col-xs-1">ID</div>
+            <div class="col-xs-3">用户名</div>
+            <div class="col-xs-2">性别</div>
+            <div class="col-xs-4">EMAIL</div>
+            <div class="col-xs-2">操作</div>
+        </div>
+
+            {volist name="dataList" id="teacher" key="key"}
+            <div class="col-xs-12">
+                <div class="col-xs-1">{$key}</div>
+                <div class="col-xs-3">{$teacher->getData('name')}</div>
+                <div class="col-xs-1 text-center">{eq name = 'teacher->getData("sex")'  value ='0'} 男 {else/}女{/eq}</div>
+                <div class="col-xs-4">{$teacher->getData('email')}</div>
+                <div class="col-xs-2 text-center">
+                    <a href="{:url('edit?id='.$teacher->getData('id'))}">编辑</a>
+                    <a href="{:url('delete?id='.$teacher->getData('id'))}">删除</a>
+                </div>
+            </div>
+            {/volist}
+        <div class="col-xs-12 text-center"> {$dataList->render()}</div>
+
+    </div>
+</div>
+</body>
+</html>

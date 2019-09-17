@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合作油站列表</title>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+
+<style>
+    div{ height: 32px; line-height: 32px;}
+</style>
+<div class="container">
+    <div class="row" style="margin:15px 0;">
+       <div class="col-xs-3" style="padding-left: 0;">
+           <input class="form-control" name="files"  type="file" id="files"/>
+       </div>
+       <div class="col-xs-3"><button class="btn btn-primary" type="button" onclick="uploadImage()"><i class="glyphicon glyphicon-upload"></i>&nbsp;上传</button></div>
+    </div>
+</div>
+</body>
+
+<script>
+    function uploadImage() {
+        var file =  document.getElementById("files").files[0];
+        var data = new FormData();
+        data.append('files',file);
+        $.ajax({
+            url: "/index/site/upload",
+            type: "post",
+            data: data,
+            contentType: false,
+            processData: false,
+            mimeType: "multipart/form-data",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+                alert('上传失败!')
+            }
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单提交数据</title>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+    <form action="insert" method="post">
+        <div class="row" style="margin-top: 20px">
+            <style>
+                .row div{ height: 35px; line-height: 35px; border-bottom: 1px solid #FFF; padding: 0;}
+                .row .col-xs-2{ text-align: right; margin-right: 10px; padding-right: 10px; background-color: #2aabd2; color: #FFF;}
+                .row input{ height: 28px; line-height: 26px;}
+                select{ width: 100px; border: 1px solid #999999;}
+            </style>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-2"><label>姓名:</label></div>
+            <div class="col-xs-5">
+                <input type="text" name="name">
+            </div>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-2"><label>用户名:</label></div>
+            <div class="col-xs-5"><input type="text" name="username"></div>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-2"><label>性别:</label></div>
+            <div class="col-xs-5">
+                <select name="sex">
+                    <option value="0">男</option>
+                    <option value="1">女</option>
+                </select>
+            </div>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-2"><label>邮箱:</label></div>
+            <div class="col-xs-5"><input type="text" name="email"></div>
+        </div>
+        <div class="row" style="text-align: center; margin-top: 20px;"><button type="submit" class="btn-primary btn">保存</button></div>
+    </form>
+</div>
+
+
+</body>
+</html>
